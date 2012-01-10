@@ -1,8 +1,4 @@
-<?php
-/**
- * Created by JetBrains PhpStorm.
- * User: troy
- * Date: 10.01.12
- * Time: 18:17
- * To change this template use File | Settings | File Templates.
- */
+<div class="span16">
+  <h3>Example paragraph</h3>
+  <p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+</div>
