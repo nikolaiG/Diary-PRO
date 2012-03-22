@@ -1,59 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Diary PRO</title>
-	<meta name="description" content="">
-	<meta name="author" content="Evgeny Lsh">
+    <meta charset="utf-8">
+    <title>Bootstrap, from Twitter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-	<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+    <!-- Le styles -->
+    <?=$_css_file?>
 
-	<!-- Le styles -->
-	<?=$_css_file?>
+    <style>
+        body {
+            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+    </style>
 
-	<!-- js files -->
-	<?=$_js_file?>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-	<style type="text/css">
-		body {
-			padding-top: 60px;
-		}
-	</style>
-
-	<!-- Le fav and touch icons -->
-	<link rel="shortcut icon" href="images/favicon.ico">
-	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/design/img/favicon.ico">
 </head>
 
 <body>
 
-<div class="topbar">
-	<div class="fill">
-		<div class="container">
-			<a class="brand" href="#">Diary PRO</a>
-
-			<ul class="nav">
-				<? foreach ($top_menu as $_name => $_url) {?>
-					<li <?= $menu_item == $_name ? 'class="active"' : ''?>><a href="<?=$_url?>"><?=$_name?></a></li>
-				<?}?>
-			</ul>
-		</div>
-	</div>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="#">Project name</a>
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <? foreach ($top_menu as $_name => $_url) {?>
+                        <li <?= $menu_item == $_name ? 'class="active"' : ''?>><a href="<?=$_url?>"><?=$_name?></a></li>
+                    <?}?>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
 </div>
 
 <div class="container">
-	<?=$content?>
-	<footer>
-		<p>&copy; Evgeny Leshchenko 2011</p>
-	</footer>
+    <?=$content?>
+</div> <!-- /container -->
 
-</div>
-<!-- /container -->
-
+<!-- Le javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<?=$_js_file?>
 </body>
 </html>
