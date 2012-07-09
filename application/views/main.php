@@ -35,12 +35,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="#">Project name</a>
+            <a class="brand" href="#">Diary PRO v0.1</a>
             <div class="nav-collapse">
                 <ul class="nav">
                     <? foreach ($top_menu as $_name => $_url) {?>
                         <li <?= $menu_item == $_name ? 'class="active"' : ''?>><a href="<?=$_url?>"><?=$_name?></a></li>
                     <?}?>
+                </ul>
+                <ul class="nav pull-right">
+                    <li><a href="#">username</a></li>
+                    <li><a href="<?=Route::url('default',array('controller' => 'auth', 'action' => 'logout'))?>">logout</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

@@ -7,13 +7,7 @@ class Controller_Base extends Controller {
 	protected $_js_file   = array('_' => "\n");
 	protected $_css_file  = array('_' => "\n");
 
-	protected $_top_menu = array(
-		'Home' => '#',
-		'Diary' => '#',
-		'Books' => '#',
-		'Books' => '#',
-		'Habits' => '#',
-	);
+	protected $_top_menu = array();
 
 	protected $_this_menu_item = 'Home';
 
@@ -27,9 +21,14 @@ class Controller_Base extends Controller {
         $this->attach_file('design/js/jquery.min.js');
         $this->attach_file('design/js/bootstrap.min.js');
 
+
+        $this->auth = Auth::instance();
+        $this->session = Session::instance();
 	}
 
 	public function after() {
+        $this->setTopMenu();
+
 		$this->view->_css_file = implode(" \n ",$this->_css_file);
 		$this->view->_js_file  = implode(" \n ",$this->_js_file);
 
@@ -41,14 +40,23 @@ class Controller_Base extends Controller {
 
 	public function action_index() {
 
-        if ( Auth::instance()->logged_in() ) {
-
+        if ( $this->auth->logged_in() ) {
+            $view = View::factory('index');
         }else {
             $view = View::factory('auth');
         }
 
 		$this->view->content = $view;
 	}
+
+    protected function setTopMenu() {
+        $this->_top_menu = array(
+            'Home' => URL::base(),
+            'Diary' => Route::url('default',array('controller' => 'Diary')),
+            'Books' => '#',
+            'Habits' => '#',
+        );
+    }
 
 	protected function attach_file($file_path) {
 
