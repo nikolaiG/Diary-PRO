@@ -2,6 +2,11 @@
 
 class Controller_Auth extends Controller_Base {
 
+    public function before() {
+        $this->unauthorized_access(true);
+        parent::before();
+    }
+
 	public function action_login() {
         $login    = $_POST['email'];
         $password = $_POST['password'];

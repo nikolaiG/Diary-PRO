@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Diarp PRO Alpha</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
     <!-- Le styles -->
     <?=$_css_file?>
@@ -30,7 +32,7 @@
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <a class="btn btn-navbar">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -43,8 +45,10 @@
                     <?}?>
                 </ul>
                 <ul class="nav pull-right">
-                    <li><a href="#">username</a></li>
-                    <li><a href="<?=Route::url('default',array('controller' => 'auth', 'action' => 'logout'))?>">logout</a></li>
+                <? if ( Auth::instance()->logged_in() ) { ?>
+                        <li><a href="#"><i class="icon-user"></i> <?=Auth::instance()->get_user()->username?></a></li>
+                        <li><a href="<?=Route::url('default',array('controller' => 'auth', 'action' => 'logout'))?>"><i class="icon-off"></i> exit</a></li>
+                    <? } ?>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

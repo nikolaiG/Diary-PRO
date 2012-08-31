@@ -4,7 +4,7 @@
             <h1>Diary PRO — my life management</h1>
         </div>
         <div class="span2 offset4">
-            <button class="btn btn-large btn-primary"> <i class="icon-pencil icon-white"></i> add Post </button>
+            <a class="btn btn-large btn-primary" href="<?=Route::url('default', array('controller' => 'diary', 'action' => 'add'))?>"><i class="icon-pencil icon-white"></i> add Post </a>
         </div>
     </div>
 </div>
