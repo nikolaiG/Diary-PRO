@@ -28,6 +28,8 @@ class Controller_Base extends Controller {
                 $this->request->redirect('/');
             }
         }
+
+        $this->user = $this->auth->get_user();
 	}
 
 	public function after() {

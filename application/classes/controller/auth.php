@@ -8,11 +8,10 @@ class Controller_Auth extends Controller_Base {
     }
 
 	public function action_login() {
-        $login    = $_POST['email'];
-        $password = $_POST['password'];
+        $login    = $this->request->post('email');
+        $password = $this->request->post('password');
 
         $this->auth->login($login,$password);
-        $user = ORM::factory('user')->where('username','=',$login)->where('password','=',$this->auth->hash($password))->find();
         $this->request->redirect(URL::base());
 	}
 

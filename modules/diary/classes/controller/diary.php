@@ -5,7 +5,8 @@ class Controller_Diary extends Controller_Base {
 	protected $_this_menu_item = 'Diary';
 
 	public function action_index() {
-        $view = View::factory('diary/index');
+        $view = View::factory('diary/main');
+        $view->posts = ORM::factory('post')->where('user_id', '=', $this->user->id)->find_all();
 
         $this->view->content = $view;
 	}
@@ -13,7 +14,15 @@ class Controller_Diary extends Controller_Base {
     public function action_add() {
 
         if ( $this->request->method() == 'POST' ) {
+            $post = ORM::factory('post');
+            if ( $post->can_add() ) {
+                $post->name = $this->request->post('name');
+                $post->text = $this->request->post('text');
+                $post->user_id = $this->user->id;
+                $post->save();
 
+                $this->request->redirect(Route::url('default', array('controller' => $this->request->controller())));
+            }
         }
 
         $this->attach_file('modules/diary/media/js/lib/bootstrap-wysihtml5/wysihtml5-0.3.0.min.js');

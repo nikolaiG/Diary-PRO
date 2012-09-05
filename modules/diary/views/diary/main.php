@@ -34,16 +34,15 @@
     </div>
 
     <div class="span8">
-        <div class="hero-unit">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn" href="#">View details »</a></p>
-        </div>
-        <div class="hero-unit">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn" href="#">View details »</a></p>
-        </div>
+        <? foreach ($posts as $_post) { ?>
+            <div class="hero-unit">
+                <h2><?=$_post->get_name()?></h2>
+                <p><?=$_post->get_text(false)?></p>
+                <? if ( $cat_name = $_post->get_cat_name() ) { ?>
+                    <p><a class="btn" href="#"><?=$cat_name?> »</a></p>
+                <? } ?>
+            </div>
+        <? } ?>
     </div>
 </div>
 
