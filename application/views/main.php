@@ -56,6 +56,7 @@
 </div>
 
 <div class="container">
+    <?=$crumbs?>
     <?=$content?>
 </div> <!-- /container -->
 

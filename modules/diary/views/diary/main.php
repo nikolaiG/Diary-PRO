@@ -18,17 +18,6 @@
                 <li><a href="#">Link</a></li>
                 <li><a href="#">Link</a></li>
                 <li><a href="#">Link</a></li>
-                <li class="nav-header">Sidebar</li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li class="nav-header">Sidebar</li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
             </ul>
         </div>
     </div>
@@ -39,7 +28,7 @@
                 <h2><?=$_post->get_name()?></h2>
                 <p><?=$_post->get_text(false)?></p>
                 <? if ( $cat_name = $_post->get_cat_name() ) { ?>
-                    <p><a class="btn" href="#"><?=$cat_name?> »</a></p>
+                    <p><a class="btn" href="<?=$_post->get_url('view')?>"><?=$cat_name?> »</a></p>
                 <? } ?>
             </div>
         <? } ?>

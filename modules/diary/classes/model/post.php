@@ -26,6 +26,16 @@ class Model_Post extends ORM {
         return $cat_name;
     }
 
+    public function get_url($action = 'view') {
+        $url = '#';
+
+        if ( $action == 'view') {
+            $url = Route::url('default', array('controller' => 'diary', 'action' => 'view', 'id' => $this->id));
+        }
+
+        return $url;
+    }
+
 }
 
 ?>

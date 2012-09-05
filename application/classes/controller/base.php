@@ -8,6 +8,7 @@ class Controller_Base extends Controller {
 	protected $_js_file   = array('_' => "\n");
 	protected $_css_file  = array('_' => "\n");
 
+    protected $_crumbs = array();
 	protected $_top_menu = array();
 	protected $_this_menu_item = 'Home';
 
@@ -35,6 +36,12 @@ class Controller_Base extends Controller {
 	public function after() {
         $this->setTopMenu();
 
+        if ( $this->crumbs ) {
+            $crumbs = View::factory('crumbs');
+            $crumbs->crumbs = $this->crumbs;
+            $this->view->crumbs = $crumbs;
+        }
+
 		$this->view->_css_file = implode(" \n ",$this->_css_file);
 		$this->view->_js_file  = implode(" \n ",$this->_js_file);
 
@@ -54,6 +61,10 @@ class Controller_Base extends Controller {
 
 		$this->view->content = $view;
 	}
+
+    protected function add_crumb($name, $uri) {
+        $this->crumbs[] = array('name' => $name, 'uri' => $uri);
+    }
 
     protected function unauthorized_access($can = false) {
         $this->_can_unauthorized = $can;

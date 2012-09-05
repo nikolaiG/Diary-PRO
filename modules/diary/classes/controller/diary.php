@@ -4,6 +4,10 @@ class Controller_Diary extends Controller_Base {
 
 	protected $_this_menu_item = 'Diary';
 
+    public function before() {
+        parent::before();
+        $this->add_crumb('Diary', Route::url('default', array('controller' => $this->request->controller())));
+    }
 	public function action_index() {
         $view = View::factory('diary/main');
         $view->posts = ORM::factory('post')->where('user_id', '=', $this->user->id)->find_all();
@@ -35,7 +39,16 @@ class Controller_Diary extends Controller_Base {
     }
 
     public function action_view() {
+        $id = $this->request->param('id');
+        $post = ORM::factory('post', $id);
 
+        if ( !$post->loaded() OR !$post->can_view() ) throw new HTTP_Exception_404;
+        $this->add_crumb($post->get_name(), $post->get_url());
+
+        $view = View::factory('diary/view');
+        $view->post = $post;
+
+        $this->view->content = $view;
     }
 
     public function action_edit () {
